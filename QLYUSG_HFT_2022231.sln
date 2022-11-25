@@ -21,6 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QLYUSG_HFT_2022231.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLYUSG_HFT_2022231.Endpoint", "QLYUSG_HFT_2022231.Endpoint\QLYUSG_HFT_2022231.Endpoint.csproj", "{4CF6B9E6-02B5-4A5B-B319-984727CFA239}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{E4EBE027-26D9-4102-BA82-16D0E08E282A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
