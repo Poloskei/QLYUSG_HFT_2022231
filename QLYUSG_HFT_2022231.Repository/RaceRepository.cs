@@ -16,12 +16,12 @@ namespace QLYUSG_HFT_2022231.Repository
 
         public override Race Read(int id)
         {
-            return rdc.Races.FirstOrDefault(r => r.RaceId == id);
+            return rdc.Races.FirstOrDefault(r => r.Id == id);
         }
 
         public override void Update(Race item)
         {
-            var old = item.RaceId;
+            var old = item.Id;
             foreach (var property in item.GetType().GetProperties())
             {
                 property.SetValue(old, property.GetValue(item));

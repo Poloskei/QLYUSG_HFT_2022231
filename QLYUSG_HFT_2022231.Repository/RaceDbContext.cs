@@ -73,12 +73,12 @@ namespace QLYUSG_HFT_2022231.Repository
 
 
             modelBuilder.Entity<Race>().HasData(
-                new Race() { Country="USA", Name="1000 miles of Sebring",       RaceId = 1},
-                new Race() { Country="Belgium", Name="6 hours of Spa-Francorchamps", RaceId = 2},
-                new Race() { Country="France", Name="24 hours of Le Mans",      RaceId = 3},
-                new Race() { Country="Italy", Name="6 hours of Monza",          RaceId = 4},
-                new Race() { Country="Japan", Name="6 hours of Fuji",          RaceId = 5},
-                new Race() { Country="Bahrain", Name="8 hours of Bahrain",          RaceId = 6}
+                new Race() { Country="USA", Name="1000 miles of Sebring",       Id = 1},
+                new Race() { Country="Belgium", Name="6 hours of Spa-Francorchamps", Id = 2},
+                new Race() { Country="France", Name="24 hours of Le Mans",      Id = 3},
+                new Race() { Country="Italy", Name="6 hours of Monza",          Id = 4},
+                new Race() { Country="Japan", Name="6 hours of Fuji",          Id = 5},
+                new Race() { Country="Bahrain", Name="8 hours of Bahrain",          Id = 6}
                 );
 
             modelBuilder.Entity<Position>().HasData(

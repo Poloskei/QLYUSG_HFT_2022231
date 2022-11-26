@@ -12,7 +12,7 @@ namespace QLYUSG_HFT_2022231.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RaceId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
