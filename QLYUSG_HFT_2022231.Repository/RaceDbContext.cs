@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Repository
 {
-    class RaceDbContext : DbContext
+    public class RaceDbContext : DbContext
     {
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
@@ -24,7 +24,7 @@ namespace QLYUSG_HFT_2022231.Repository
         {
             if (!builder.IsConfigured)
             {
-                builder.UseLazyLoadingProxies().UseInMemoryDatabase("");
+                builder.UseLazyLoadingProxies().UseInMemoryDatabase("wec");
             }
         }
 
@@ -46,7 +46,7 @@ namespace QLYUSG_HFT_2022231.Repository
                     x => x.HasOne(x => x.Team).WithMany().HasForeignKey(x => x.TeamId).OnDelete(DeleteBehavior.Cascade)
                 );
 
-
+#region dbseed
             modelBuilder.Entity<Driver>().HasData(
                 new Driver() { Age = 30, Name = "André Negrão",         Id = 1,TeamId=4},
                 new Driver() { Age = 38, Name = "Nicolas Lapierre",     Id = 2,TeamId=4},
@@ -113,6 +113,7 @@ namespace QLYUSG_HFT_2022231.Repository
                 new Position() { RaceId = 6, TeamId = 4, Result = 3, Points = 23 },
                 new Position() { RaceId = 6, TeamId = 2, Result = 4, Points = 18 }
                 );
+#endregion
         }
 
     }
