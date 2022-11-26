@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
-    class RaceLogic
+    public class RaceLogic
     {
         RaceRepository race;
 
@@ -17,9 +17,9 @@ namespace QLYUSG_HFT_2022231.Logic
             this.race = race;
         }
 
-        public Team WinningTeam()
+        public Team WinningTeam(Race r)
         {
-            return null;
+            return r.Positions.FirstOrDefault(p => p.Result == 1).Team;
         }
 
 

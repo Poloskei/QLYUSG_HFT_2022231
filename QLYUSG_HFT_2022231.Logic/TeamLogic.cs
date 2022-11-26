@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
-    class TeamLogic
+    public class TeamLogic
     {
         TeamRepository team;
 
@@ -17,14 +17,24 @@ namespace QLYUSG_HFT_2022231.Logic
             this.team = team;
         }
 
-        public int PointsEarned()
+        public int PointsEarned(Team t)
         {
-            return 0;
+            return t.Positions.Sum(p => p.Points); ;
         }
-        public int RacesFinished()
+        public int RacesFinished(Team t)
         {
-            return 0;
+            return t.Positions.Count;
         }
+        public double AvgFinishingPos(Team t)
+        {
+            return t.Positions.Average(p => p.Result);
+        }
+        //public Team Champions()
+        //{
+        //    return team.ReadAll().Max(t => PointsEarned(t));
+        //}
+        
+
 
 
 

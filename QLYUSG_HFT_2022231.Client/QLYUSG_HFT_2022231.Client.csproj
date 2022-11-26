@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QLYUSG_HFT_2022231.Endpoint\QLYUSG_HFT_2022231.Endpoint.csproj" />
+    <ProjectReference Include="..\QLYUSG_HFT_2022231.Logic\QLYUSG_HFT_2022231.Logic.csproj" />
     <ProjectReference Include="..\QLYUSG_HFT_2022231.Models\QLYUSG_HFT_2022231.Models.csproj" />
     <ProjectReference Include="..\QLYUSG_HFT_2022231.Repository\QLYUSG_HFT_2022231.Repository.csproj" />
   </ItemGroup>
