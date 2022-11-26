@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Models
 {
-    class Race
+    public class Race
     {
-        public int DriverId { get; set; }
-        public int Pos { get; set; }
-        public int PointToTeam { get; set; }
-        public int Payout { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int RaceId { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
+        public virtual ICollection<Team> Teams { get; set; }
+        public Race()
+        {
+            Teams = new HashSet<Team>();
+        }
     }
 }
