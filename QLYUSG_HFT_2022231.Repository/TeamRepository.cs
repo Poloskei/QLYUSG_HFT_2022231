@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Repository
 {
-    class TeamRepository : Repository<Team>
+    public class TeamRepository : Repository<Team>
     {
         public TeamRepository(RaceDbContext rdc) : base(rdc)
         {
