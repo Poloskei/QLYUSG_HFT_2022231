@@ -46,6 +46,7 @@ namespace QLYUSG_HFT_2022231.Repository
                     x => x.HasOne(x => x.Team).WithMany().HasForeignKey(x => x.TeamId).OnDelete(DeleteBehavior.Cascade)
                 );
 
+
 #region dbseed
             modelBuilder.Entity<Driver>().HasData(
                 new Driver() { Age = 30, Name = "André Negrão",         Id = 1,TeamId=4},
@@ -82,15 +83,15 @@ namespace QLYUSG_HFT_2022231.Repository
                 );
 
             modelBuilder.Entity<Position>().HasData(
-                //serbring
+                //sebring
                 new Position() { RaceId = 1, TeamId = 4, Result = 1, Points = 38 },
                 new Position() { RaceId = 1, TeamId = 1, Result = 2, Points = 27 },
                 new Position() { RaceId = 1, TeamId = 3, Result = 3, Points = 23 },
                 
                 //spa
-                new Position() { RaceId = 1, TeamId = 1, Result = 1, Points = 25 },
-                new Position() { RaceId = 1, TeamId = 4, Result = 2, Points = 18 },
-                new Position() { RaceId = 1, TeamId = 3, Result = 9, Points = 15 },
+                new Position() { RaceId = 2, TeamId = 1, Result = 1, Points = 25 },
+                new Position() { RaceId = 2, TeamId = 4, Result = 2, Points = 18 },
+                new Position() { RaceId = 2, TeamId = 3, Result = 9, Points = 15 },
                
                 //lemans
                 new Position() { RaceId = 3, TeamId = 1, Result = 1, Points = 50 },
