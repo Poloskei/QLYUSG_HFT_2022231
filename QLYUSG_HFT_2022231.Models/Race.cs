@@ -15,7 +15,10 @@ namespace QLYUSG_HFT_2022231.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
+        [NotMapped]
         public virtual ICollection<Team> Teams { get; set; }
+        [NotMapped]
+        public virtual ICollection<Position> Positions { get; set; }
         public Race()
         {
             Teams = new HashSet<Team>();

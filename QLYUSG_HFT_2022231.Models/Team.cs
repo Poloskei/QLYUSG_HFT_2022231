@@ -17,7 +17,10 @@ namespace QLYUSG_HFT_2022231.Models
         public string Car { get; set; }
         [NotMapped]
         public virtual ICollection<Driver> Drivers { get; set; }
+        [NotMapped]
         public virtual ICollection<Race> Races { get; set; }
+        [NotMapped]
+        public virtual ICollection<Position> Positions { get; set; }
         public Team()
         {
             Drivers = new HashSet<Driver>();

@@ -11,7 +11,20 @@ namespace QLYUSG_HFT_2022231.Client
             //Console.WriteLine("Hello World!");
             RaceDbContext raceDb = new RaceDbContext();
 
-            var items = raceDb.Races.ToArray();
+            //ar items = raceDb.Races.ToArray();
+
+            foreach (var race in raceDb.Races)
+            {
+                Console.WriteLine(race.Name);
+                foreach (var team in race.Teams)
+                {
+                    Console.WriteLine("\t"+team.Positions.FirstOrDefault(i => i.RaceId == race.Id).Result+" "+team.Name);
+                }
+            }
+            
+            
+            
+            
             ;
         }
     }

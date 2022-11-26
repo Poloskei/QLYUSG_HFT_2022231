@@ -46,6 +46,9 @@ namespace QLYUSG_HFT_2022231.Repository
                     x => x.HasOne(x => x.Team).WithMany().HasForeignKey(x => x.TeamId).OnDelete(DeleteBehavior.Cascade)
                 );
 
+            modelBuilder.Entity<Position>().HasOne(p => p.Race).WithMany(r => r.Positions).HasForeignKey(t => t.RaceId);
+
+            modelBuilder.Entity<Position>().HasOne(p => p.Team).WithMany(t => t.Positions).HasForeignKey(r => r.TeamId);
 
 #region dbseed
             modelBuilder.Entity<Driver>().HasData(
