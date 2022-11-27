@@ -31,7 +31,7 @@ namespace QLYUSG_HFT_2022231.Client
                 Console.WriteLine(item.Name);
                 Console.WriteLine("\tpoints earned: " +tl.PointsEarned(item));
             }
-            Console.WriteLine("Champions: "+tl.Champions().Name);
+            //Console.WriteLine("Champions: "+tl.Champions().Name);
             
             
             

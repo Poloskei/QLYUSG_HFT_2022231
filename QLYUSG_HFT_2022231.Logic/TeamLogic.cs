@@ -31,9 +31,9 @@ namespace QLYUSG_HFT_2022231.Logic
         }
         //public Team Champions()
         //{
-        //    return team.ReadAll().Max(t => PointsEarned(t));
+        //    return team.ReadAll().
         //}
-        
+
 
 
 
