@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Repository
 {
-    public abstract class Repository<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
         protected RaceDbContext rdc;
 
@@ -34,6 +34,6 @@ namespace QLYUSG_HFT_2022231.Repository
 
         public abstract T Read(int id);
         public abstract void Update(T item);
-        
+
     }
 }

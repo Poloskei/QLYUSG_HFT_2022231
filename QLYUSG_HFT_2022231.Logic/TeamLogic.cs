@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
-    public class TeamLogic
+    public class TeamLogic : ITeamLogic
     {
-        TeamRepository team;
+        IRepository<Team> team;
 
-        public TeamLogic(TeamRepository team)
+        public TeamLogic(IRepository<Team> team)
         {
             this.team = team;
         }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
-    public class RaceLogic
+    public class RaceLogic : IRaceLogic
     {
-        RaceRepository race;
+        IRepository<Race> race;
 
-        public RaceLogic(RaceRepository race)
+        public RaceLogic(IRepository<Race> race)
         {
             this.race = race;
         }
@@ -32,16 +32,16 @@ namespace QLYUSG_HFT_2022231.Logic
 
         public void Create(Race item)
         {
-            if (item.Name =="")
+            if (item.Name == "" || item.Id < 1)
             {
-                throw new ArgumentException("Cannot create: Name empty");
+                throw new ArgumentException("cannot create: bad data");
             }
             race.Create(item);
         }
 
         public void Delete(int id)
         {
-            if (Read(id)==null)
+            if (Read(id) == null)
             {
                 throw new ArgumentException("this item doesn't exist");
             }

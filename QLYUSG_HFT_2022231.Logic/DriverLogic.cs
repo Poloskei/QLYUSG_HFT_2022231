@@ -5,11 +5,11 @@ using QLYUSG_HFT_2022231.Repository;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
-    public class DriverLogic
+    public class DriverLogic : IDriverLogic
     {
-        DriverReposistory driver;
+        IRepository<Driver> driver;
 
-        public DriverLogic(DriverReposistory driver)
+        public DriverLogic(IRepository<Driver> driver)
         {
             this.driver = driver;
         }
