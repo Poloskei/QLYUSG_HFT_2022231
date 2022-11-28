@@ -16,23 +16,27 @@ namespace QLYUSG_HFT_2022231.Logic
         {
             this.team = team;
         }
-
-        public int PointsEarned(Team t)
+        //non cruds
+        public double AvgAge(int tid)
         {
-            return t.Positions.Sum(p => p.Points); ;
+            Team t = team.ReadAll().FirstOrDefault(t => t.Id == tid);
+            return t.Drivers.Average(d => d.Age);
         }
-        public int RacesFinished(Team t)
+        public int PointsEarned(int tid)
         {
-            return t.Positions.Count;
+            Team t = team.ReadAll().FirstOrDefault(t => t.Id == tid);
+            return t.Positions.Sum(p => p.Points);
         }
-        public double AvgFinishingPos(Team t)
+        public IEnumerable<TeamStatistics> TeamStatistics()
         {
-            return t.Positions.Average(p => p.Result);
+            return team.ReadAll()
+                       .Select(t => new Logic.TeamStatistics
+                       {
+                           Id = t.Id,
+                           AverageAge = t.Drivers.Average(d => d.Age),
+                           PointsEarned = PointsEarned(t.Id)
+                       });
         }
-        //public Team Champions()
-        //{
-        //    return team.ReadAll().
-        //}
 
 
 
@@ -42,7 +46,7 @@ namespace QLYUSG_HFT_2022231.Logic
 
 
 
-
+        //cruds
 
         public void Create(Team item)
         {
@@ -55,11 +59,11 @@ namespace QLYUSG_HFT_2022231.Logic
 
         public void Delete(int id)
         {
-            if (Read(id) == null)
+            if (!team.ReadAll().Any(t => t.Id == id))
             {
-                throw new ArgumentException("this item doesn't exist");
+                throw new ArgumentException("this item doesn't exist or already deleted");
             }
-            team.Delete(id);
+            else team.Delete(id);
         }
 
         public IQueryable<Team> ReadAll()
@@ -75,5 +79,11 @@ namespace QLYUSG_HFT_2022231.Logic
         {
             team.Update(item);
         }
+    }
+    public class TeamStatistics
+    {
+        public int Id { get; set; }
+        public double AverageAge { get; set; }
+        public int PointsEarned { get; set; }
     }
 }

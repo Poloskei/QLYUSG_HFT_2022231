@@ -1,17 +1,18 @@
 ﻿using QLYUSG_HFT_2022231.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace QLYUSG_HFT_2022231.Logic
 {
     public interface ITeamLogic
     {
-        double AvgFinishingPos(Team t);
+        double AvgAge(int tid);
         void Create(Team item);
         void Delete(int id);
-        int PointsEarned(Team t);
-        int RacesFinished(Team t);
+        int PointsEarned(int tid);
         Team Read(int id);
         IQueryable<Team> ReadAll();
+        IEnumerable<TeamStatistics> TeamStatistics();
         void Update(Team item);
     }
 }

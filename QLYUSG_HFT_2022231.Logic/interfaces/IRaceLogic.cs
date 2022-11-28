@@ -10,6 +10,6 @@ namespace QLYUSG_HFT_2022231.Logic
         Race Read(int id);
         IQueryable<Race> ReadAll();
         void Update(Race item);
-        Team WinningTeam(Race r);
+        int WinningTeam(int raceId);
     }
 }

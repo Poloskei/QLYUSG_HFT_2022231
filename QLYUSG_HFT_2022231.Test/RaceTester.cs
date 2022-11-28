@@ -11,13 +11,12 @@ using System.Linq;
 namespace QLYUSG_HFT_2022231.Test
 {
     [TestFixture]
-    public class TesterClass
+    public class RaceTester
     {
         RaceLogic logic;
 
         Mock<IRepository<Race>> mockRaceRepo;
         Mock<IPositionRepository> mockPosRepo;
-        public Mock IRepository { get; private set; }
 
         [SetUp]
         public void Init()
@@ -52,11 +51,22 @@ namespace QLYUSG_HFT_2022231.Test
             logic = new RaceLogic(mockRaceRepo.Object,mockPosRepo.Object);
         }
 
-        //[Test]
-        //public void WinningTeamTest()
-        //{
 
-        //}
+        [Test]
+        public void ChampionTester()
+        {
+            int result = logic.Champions();
+            Assert.That(result, Is.EqualTo(1));
+        }
+
+
+
+        [Test]
+        public void WinningTeamTest()
+        {
+            int teamid = logic.WinningTeam(4);
+            Assert.That(teamid,Is.EqualTo(4));
+        }
 
         [Test]
         public void CreateRaceTestWithCorrectInput()

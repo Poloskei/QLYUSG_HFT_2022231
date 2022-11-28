@@ -20,9 +20,21 @@ namespace QLYUSG_HFT_2022231.Logic
             this.positions = positions;
         }
 
-        public Team WinningTeam(Race r)
+
+        //non cruds
+        public int WinningTeam(int raceId)
         {
-            return r.Positions.FirstOrDefault(p => p.Result == 1).Team;
+            return positions.ReadAll().FirstOrDefault(p => p.RaceId == raceId && p.Result == 1).TeamId;
+        }
+        public int Champions()
+        {
+            var v = positions.ReadAll()
+                             .GroupBy(p => p.TeamId).Select(s => new
+                             {
+                                 teamid = s.Key,
+                                 pointsEarned = s.Sum(i => i.Points)
+                             }) ;
+            return v.FirstOrDefault(p => p.pointsEarned == v.Max(i => i.pointsEarned)).teamid;
         }
 
 
@@ -31,8 +43,7 @@ namespace QLYUSG_HFT_2022231.Logic
 
 
 
-
-
+        //cruds
         public void Create(Race item)
         {
             if (item.Name == "" || item.Id < 1)

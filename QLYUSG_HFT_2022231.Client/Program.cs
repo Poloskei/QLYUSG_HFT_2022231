@@ -2,6 +2,7 @@
 using QLYUSG_HFT_2022231.Logic;
 using System;
 using System.Linq;
+using QLYUSG_HFT_2022231.Repository.Repositories;
 
 namespace QLYUSG_HFT_2022231.Client
 {
@@ -12,29 +13,11 @@ namespace QLYUSG_HFT_2022231.Client
             //Console.WriteLine("Hello World!");
             RaceDbContext raceDb = new RaceDbContext();
 
-            //var items = raceDb.Races.ToArray();
-            //;
-            //foreach (var race in raceDb.Races)
-            //{
-            //    Console.WriteLine(race.Name);
-            //    foreach (var team in race.Teams)
-            //    {
-            //        Console.WriteLine("\t"+team.Positions.FirstOrDefault(i => i.RaceId == race.Id).Result+" "+team.Name);
-            //    }
-            //}
             RaceRepository rr = new RaceRepository(raceDb);
-            //RaceLogic rl = new RaceLogic(rr);
-            TeamRepository tr = new TeamRepository(raceDb);
-            TeamLogic tl = new TeamLogic(tr);
-            foreach (var item in raceDb.Teams)
-            {
-                Console.WriteLine(item.Name);
-                Console.WriteLine("\tpoints earned: " +tl.PointsEarned(item));
-            }
-            //Console.WriteLine("Champions: "+tl.Champions().Name);
-            
-            
-            
+            PositionRepository pr = new PositionRepository(raceDb);
+            RaceLogic rl = new RaceLogic(rr,pr);
+            Console.WriteLine(rl.WinningTeam(2));
+            rl.Champions();
             ;
         }
     }

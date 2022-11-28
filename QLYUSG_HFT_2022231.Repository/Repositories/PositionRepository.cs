@@ -31,7 +31,7 @@ namespace QLYUSG_HFT_2022231.Repository.Repositories
             {
                 pos.SetValue(oldPos, pos.GetValue(item));
             }
-            throw new NotImplementedException();
+            rdc.SaveChanges();
         }
 
         public void Create(Position item)

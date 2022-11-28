@@ -14,8 +14,21 @@ namespace QLYUSG_HFT_2022231.Logic
             this.driver = driver;
         }
 
+
+
+
+
+
         public void Create(Driver item)
         {
+            if (item.Name.Length < 2)
+            {
+                throw new ArgumentException("invalid name");
+            }
+            if (item.Age < 1)
+            {
+                throw new ArgumentException("invalid age");
+            }
             driver.Create(item);
         }
 
