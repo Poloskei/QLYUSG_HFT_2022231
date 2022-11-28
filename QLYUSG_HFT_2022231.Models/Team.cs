@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Models
@@ -17,9 +18,9 @@ namespace QLYUSG_HFT_2022231.Models
         public string Car { get; set; }
         [NotMapped]
         public virtual ICollection<Driver> Drivers { get; set; }
-        [NotMapped]
+        [NotMapped][JsonIgnore]
         public virtual ICollection<Race> Races { get; set; }
-        [NotMapped]
+        [NotMapped][JsonIgnore]
         public virtual ICollection<Position> Positions { get; set; }
         public Team()
         {

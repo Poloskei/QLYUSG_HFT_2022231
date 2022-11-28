@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Models
@@ -13,6 +14,7 @@ namespace QLYUSG_HFT_2022231.Models
         public int Result { get; set; }
         public int Points { get; set; }
         
+        [JsonIgnore]
         public virtual Race Race { get; set; }
         public virtual Team Team { get; set; }
 

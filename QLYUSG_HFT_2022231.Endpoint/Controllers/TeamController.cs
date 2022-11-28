@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QLYUSG_HFT_2022231.Logic;
 using QLYUSG_HFT_2022231.Models;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
-        private object logic;
+        ITeamLogic logic;
+
+        public TeamController(ITeamLogic logic)
+        {
+            this.logic = logic;
+        }
 
         // GET: api/<TeamController>
         [HttpGet]
@@ -24,27 +30,30 @@ namespace QLYUSG_HFT_2022231.Endpoint.Controllers
 
         // GET api/<TeamController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Team Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
 
         // POST api/<TeamController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] Team value)
         {
+            this.logic.Create(value);
         }
 
         // PUT api/<TeamController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Update([FromBody] Team value)
         {
+            this.logic.Update(value);
         }
 
         // DELETE api/<TeamController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this.logic.Delete(id);
         }
     }
 }

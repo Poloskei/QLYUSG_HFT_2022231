@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QLYUSG_HFT_2022231.Logic;
+using QLYUSG_HFT_2022231.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,50 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class DriverController : ControllerBase
     {
+        IDriverLogic logic;
+
+        public DriverController(IDriverLogic logic)
+        {
+            this.logic = logic;
+        }
+
         // GET: api/<DriverController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Driver> ReadAll()
         {
-            return new string[] { "value1", "value2" };
+            return this.logic.ReadAll();
         }
 
         // GET api/<DriverController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Driver Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
 
         // POST api/<DriverController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] Driver value)
         {
+            this.logic.Create(value);
         }
 
         // PUT api/<DriverController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Update([FromBody] Driver value)
         {
+            this.logic.Update(value);
         }
 
         // DELETE api/<DriverController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this.logic.Delete(id);
         }
     }
 }
