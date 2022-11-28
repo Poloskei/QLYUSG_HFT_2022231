@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace QLYUSG_HFT_2022231.Repository
 {
-    public class DriverReposistory : Repository<Driver>
+    public class DriverRepository : Repository<Driver>
     {
-        public DriverReposistory(RaceDbContext rdc) : base(rdc)
+        public DriverRepository(RaceDbContext rdc) : base(rdc)
         {
 
         }

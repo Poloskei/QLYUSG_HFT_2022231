@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QLYUSG_HFT_2022231.Logic;
+using QLYUSG_HFT_2022231.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,49 @@ namespace QLYUSG_HFT_2022231.Endpoint.Controllers
     [ApiController]
     public class RaceController : ControllerBase
     {
+        IRaceLogic logic;
+
+
+
+
+public RaceController(IRaceLogic logic)
+        {
+            this.logic = logic;
+        }
+
         // GET: api/<RaceController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Race> ReadAll()
         {
-            return new string[] { "value1", "value2" };
+            return this.logic.ReadAll();
         }
 
         // GET api/<RaceController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Race Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
 
         // POST api/<RaceController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] Race value)
         {
+            this.logic.Create(value);
         }
 
         // PUT api/<RaceController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Update([FromBody] Race value)
         {
+            this.logic.Update(value);
         }
 
         // DELETE api/<RaceController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this.logic.Delete(id);
         }
     }
 }
