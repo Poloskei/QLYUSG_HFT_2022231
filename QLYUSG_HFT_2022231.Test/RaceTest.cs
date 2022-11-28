@@ -3,6 +3,7 @@ using NUnit.Framework;
 using QLYUSG_HFT_2022231.Logic;
 using QLYUSG_HFT_2022231.Models;
 using QLYUSG_HFT_2022231.Repository;
+using QLYUSG_HFT_2022231.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace QLYUSG_HFT_2022231.Test
         RaceLogic logic;
 
         Mock<IRepository<Race>> mockRaceRepo;
+        Mock<IPositionRepository> mockPosRepo;
         public Mock IRepository { get; private set; }
 
         [SetUp]
@@ -27,7 +29,27 @@ namespace QLYUSG_HFT_2022231.Test
                 new Race() { Country="France", Name="24 hours of Le Mans",      Id = 3},
                 new Race() { Country="Italy", Name="6 hours of Monza",          Id = 4}
             }.AsQueryable());
-            logic = new RaceLogic(mockRaceRepo.Object);
+
+            mockPosRepo = new Mock<IPositionRepository>();
+            mockPosRepo.Setup(m => m.ReadAll()).Returns(new List<Position>()
+            {
+                //spa
+                new Position() { RaceId = 2, TeamId = 1, Result = 1, Points = 25 },
+                new Position() { RaceId = 2, TeamId = 4, Result = 2, Points = 18 },
+                new Position() { RaceId = 2, TeamId = 3, Result = 9, Points = 15 },
+               
+                //lemans
+                new Position() { RaceId = 3, TeamId = 1, Result = 1, Points = 50 },
+                new Position() { RaceId = 3, TeamId = 3, Result = 3, Points = 30 },
+                new Position() { RaceId = 3, TeamId = 4, Result = 23, Points = 24 },
+              
+                //monza
+                new Position() { RaceId = 4, TeamId = 4, Result = 1, Points = 25 },
+                new Position() { RaceId = 4, TeamId = 1, Result = 2, Points = 18 },
+                new Position() { RaceId = 4, TeamId = 2, Result = 33, Points = 12 },
+                new Position() { RaceId = 4, TeamId = 3, Result = 36, Points = 0 }
+            }.AsQueryable());
+            logic = new RaceLogic(mockRaceRepo.Object,mockPosRepo.Object);
         }
 
         //[Test]

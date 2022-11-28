@@ -1,5 +1,6 @@
 ﻿using QLYUSG_HFT_2022231.Models;
 using QLYUSG_HFT_2022231.Repository;
+using QLYUSG_HFT_2022231.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace QLYUSG_HFT_2022231.Logic
     public class RaceLogic : IRaceLogic
     {
         IRepository<Race> race;
+        IPositionRepository positions;
 
-        public RaceLogic(IRepository<Race> race)
+        public RaceLogic(IRepository<Race> race, IPositionRepository positions)
         {
             this.race = race;
+            this.positions = positions;
         }
 
         public Team WinningTeam(Race r)

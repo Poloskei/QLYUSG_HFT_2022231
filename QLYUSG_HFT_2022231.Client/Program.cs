@@ -23,7 +23,7 @@ namespace QLYUSG_HFT_2022231.Client
             //    }
             //}
             RaceRepository rr = new RaceRepository(raceDb);
-            RaceLogic rl = new RaceLogic(rr);
+            //RaceLogic rl = new RaceLogic(rr);
             TeamRepository tr = new TeamRepository(raceDb);
             TeamLogic tl = new TeamLogic(tr);
             foreach (var item in raceDb.Teams)
