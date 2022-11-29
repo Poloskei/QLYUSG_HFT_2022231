@@ -64,8 +64,8 @@ namespace QLYUSG_HFT_2022231.Test
         [Test]
         public void WinningTeamTest()
         {
-            int teamid = logic.WinningTeam(4);
-            Assert.That(teamid,Is.EqualTo(4));
+            int teamid = logic.WinningTeam(3);
+            Assert.That(teamid,Is.EqualTo(1));
         }
 
         [Test]

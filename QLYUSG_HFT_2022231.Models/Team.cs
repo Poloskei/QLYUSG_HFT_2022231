@@ -27,4 +27,15 @@ namespace QLYUSG_HFT_2022231.Models
             Drivers = new HashSet<Driver>();
         }
     }
+
+    public class TeamStatistics
+    {
+        public string Name { get; set; }
+        public double AverageAge { get; set; }
+        public int PointsEarned { get; set; }
+        public override string ToString()
+        {
+            return $"Team name : {Name}, Average driver age: {Math.Round(AverageAge, 2)}, Points earned: {PointsEarned} ";
+        }
+    }
 }

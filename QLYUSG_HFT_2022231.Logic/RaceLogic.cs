@@ -33,7 +33,7 @@ namespace QLYUSG_HFT_2022231.Logic
                              {
                                  teamid = s.Key,
                                  pointsEarned = s.Sum(i => i.Points)
-                             }) ;
+                             });
             return v.FirstOrDefault(p => p.pointsEarned == v.Max(i => i.pointsEarned)).teamid;
         }
 

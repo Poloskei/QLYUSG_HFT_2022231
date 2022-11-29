@@ -27,12 +27,12 @@ namespace QLYUSG_HFT_2022231.Logic
             Team t = team.ReadAll().FirstOrDefault(t => t.Id == tid);
             return t.Positions.Sum(p => p.Points);
         }
-        public IEnumerable<TeamStatistics> TeamStatistics()
+        public IEnumerable<TeamStatistics> TeamStats()
         {
             return team.ReadAll()
-                       .Select(t => new Logic.TeamStatistics
+                       .Select(t => new TeamStatistics
                        {
-                           Id = t.Id,
+                           Name = t.Name,
                            AverageAge = t.Drivers.Average(d => d.Age),
                            PointsEarned = PointsEarned(t.Id)
                        });
@@ -80,10 +80,5 @@ namespace QLYUSG_HFT_2022231.Logic
             team.Update(item);
         }
     }
-    public class TeamStatistics
-    {
-        public int Id { get; set; }
-        public double AverageAge { get; set; }
-        public int PointsEarned { get; set; }
-    }
+    
 }

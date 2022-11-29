@@ -12,7 +12,7 @@ namespace QLYUSG_HFT_2022231.Logic
         int PointsEarned(int tid);
         Team Read(int id);
         IQueryable<Team> ReadAll();
-        IEnumerable<TeamStatistics> TeamStatistics();
+        IEnumerable<TeamStatistics> TeamStats();
         void Update(Team item);
     }
 }

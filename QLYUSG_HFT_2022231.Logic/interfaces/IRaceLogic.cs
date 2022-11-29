@@ -5,6 +5,7 @@ namespace QLYUSG_HFT_2022231.Logic
 {
     public interface IRaceLogic
     {
+        int Champions();
         void Create(Race item);
         void Delete(int id);
         Race Read(int id);
