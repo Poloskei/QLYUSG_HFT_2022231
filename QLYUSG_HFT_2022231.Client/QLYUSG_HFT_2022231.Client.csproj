@@ -6,10 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QLYUSG_HFT_2022231.Endpoint\QLYUSG_HFT_2022231.Endpoint.csproj" />
-    <ProjectReference Include="..\QLYUSG_HFT_2022231.Logic\QLYUSG_HFT_2022231.Logic.csproj" />
+    <PackageReference Include="ConsoleMenu-simple" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\QLYUSG_HFT_2022231.Models\QLYUSG_HFT_2022231.Models.csproj" />
-    <ProjectReference Include="..\QLYUSG_HFT_2022231.Repository\QLYUSG_HFT_2022231.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,23 +1,46 @@
-﻿using QLYUSG_HFT_2022231.Repository;
-using QLYUSG_HFT_2022231.Logic;
+﻿using ConsoleTools;
+using QLYUSG_HFT_2022231.Models;
 using System;
 using System.Linq;
-using QLYUSG_HFT_2022231.Repository.Repositories;
 
 namespace QLYUSG_HFT_2022231.Client
 {
     class Program
     {
+        static RestService rest;
         static void Main(string[] args)
         {
             //Console.WriteLine("Hello World!");
-            RaceDbContext raceDb = new RaceDbContext();
+            rest = new RestService("http://localhost:62624/","race");
+            CrudService crud = new CrudService(rest);
 
-            RaceRepository rr = new RaceRepository(raceDb);
-            PositionRepository pr = new PositionRepository(raceDb);
-            RaceLogic rl = new RaceLogic(rr,pr);
-            Console.WriteLine(rl.WinningTeam(2));
-            rl.Champions();
+            var raceSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => crud.List<Race>())
+                .Add("Create", () => crud.Create<Race>())
+                .Add("Delete", () => crud.Delete<Race>())
+                .Add("Update", () => crud.Update<Race>())
+                .Add("Exit", ConsoleMenu.Close);
+            var teamSubMenu = new ConsoleMenu(args, level: 1)
+            .Add("List", () => crud.List<Team>())
+            .Add("Create", () => crud.Create<Team>())
+            .Add("Delete", () => crud.Delete<Team>())
+            .Add("Update", () => crud.Update<Team>())
+            .Add("Exit", ConsoleMenu.Close);
+            var driverSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => crud.List<Driver>())
+                .Add("Create", () => crud.Create<Driver>())
+                .Add("Delete", () => crud.Delete<Driver>())
+                .Add("Update", () => crud.Update<Driver>())
+                .Add("Exit", ConsoleMenu.Close);
+
+
+            var menu = new ConsoleMenu(args, level: 0)
+                .Add("Races", () => raceSubMenu.Show())
+                .Add("Team", () => teamSubMenu.Show())
+                .Add("Drivers", () => driverSubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
+
+            menu.Show();
             ;
         }
     }
