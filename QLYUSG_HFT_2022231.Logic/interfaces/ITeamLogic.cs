@@ -6,6 +6,7 @@ namespace QLYUSG_HFT_2022231.Logic
 {
     public interface ITeamLogic
     {
+        public Team OldestTeam();
         double AvgAge(int tid);
         void Create(Team item);
         void Delete(int id);

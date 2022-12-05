@@ -5,6 +5,7 @@ namespace QLYUSG_HFT_2022231.Logic
 {
     public interface IDriverLogic
     {
+        public Driver YoungestDriver();
         void Create(Driver item);
         void Delete(int id);
         Driver Read(int id);

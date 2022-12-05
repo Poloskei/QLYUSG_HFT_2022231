@@ -38,7 +38,10 @@ namespace QLYUSG_HFT_2022231.Logic
                        });
         }
 
-
+        public Team OldestTeam()
+        {
+            return team.ReadAll().FirstOrDefault(t => AvgAge(t.Id) == team.ReadAll().Min(m => AvgAge(m.Id)));
+        }
 
 
 

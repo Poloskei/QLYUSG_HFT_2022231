@@ -13,7 +13,10 @@ namespace QLYUSG_HFT_2022231.Logic
         {
             this.driver = driver;
         }
-
+        public Driver YoungestDriver()
+        {
+            return driver.ReadAll().FirstOrDefault(d => d.Age==driver.ReadAll().Min(m => m.Age));
+        }
 
 
 

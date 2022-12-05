@@ -31,12 +31,15 @@ namespace QLYUSG_HFT_2022231.Client
             .Add("Update", () => crud.Update<Team>())
             .Add("Team stats", nc.GetTeamStats)
             .Add("Champions", () => nc.ChampionshipWinners())
+            .Add("Oldest Team", () => nc.OldestTeam())
             .Add("Exit", ConsoleMenu.Close);
             var driverSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => crud.List<Driver>())
                 .Add("Create", () => crud.Create<Driver>())
                 .Add("Delete", () => crud.Delete<Driver>())
                 .Add("Update", () => crud.Update<Driver>())
+                .Add("Youngest Driver", () => nc.YoungestDriver())
+                .Add("List championship winners",() => nc.ListChampionDrivers())
                 .Add("Exit", ConsoleMenu.Close);
 
 
@@ -44,7 +47,6 @@ namespace QLYUSG_HFT_2022231.Client
                 .Add("Races", () => raceSubMenu.Show())
                 .Add("Team", () => teamSubMenu.Show())
                 .Add("Drivers", () => driverSubMenu.Show())
-                
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();

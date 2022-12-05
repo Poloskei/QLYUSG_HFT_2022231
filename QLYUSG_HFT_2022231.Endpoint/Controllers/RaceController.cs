@@ -17,12 +17,11 @@ namespace QLYUSG_HFT_2022231.Endpoint.Controllers
         IRaceLogic logic;
 
 
-
-
 public RaceController(IRaceLogic logic)
         {
             this.logic = logic;
         }
+
 
         // GET: api/<RaceController>
         [HttpGet]

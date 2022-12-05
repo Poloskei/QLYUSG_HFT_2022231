@@ -20,7 +20,8 @@ namespace QLYUSG_HFT_2022231.Endpoint.Controllers
         {
             this.logic = logic;
         }
-
+        
+        
         // GET: api/<DriverController>
         [HttpGet]
         public IEnumerable<Driver> ReadAll()

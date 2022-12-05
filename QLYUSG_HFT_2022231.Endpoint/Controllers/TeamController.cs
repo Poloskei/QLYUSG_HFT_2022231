@@ -21,6 +21,7 @@ namespace QLYUSG_HFT_2022231.Endpoint.Controllers
             this.logic = logic;
         }
 
+
         // GET: api/<TeamController>
         [HttpGet]
         public IEnumerable<Team> ReadAll()

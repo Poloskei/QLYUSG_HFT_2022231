@@ -31,10 +31,10 @@ namespace QLYUSG_HFT_2022231.Logic
             var v = positions.ReadAll()
                              .GroupBy(p => p.TeamId).Select(s => new
                              {
-                                 teamid = s.Key,
+                                 teamId = s.Key,
                                  pointsEarned = s.Sum(i => i.Points)
                              });
-            return v.FirstOrDefault(p => p.pointsEarned == v.Max(i => i.pointsEarned)).teamid;
+            return v.FirstOrDefault(p => p.pointsEarned == v.Max(i => i.pointsEarned)).teamId;
         }
 
 

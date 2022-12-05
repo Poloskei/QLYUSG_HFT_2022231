@@ -28,16 +28,38 @@ namespace QLYUSG_HFT_2022231.Client
         }
         public void ChampionshipWinners()
         {
-            var v = rest.GetSingle<int>("Stat/ChampionshipWinners");
-            Console.WriteLine($"Champion team id: {v}");
+            var v = rest.GetSingle<Team>("Stat/ChampionshipWinners");
+            Console.WriteLine($"Champion team: {v.Name} with {v.Car}");
             Console.ReadLine();
+        }
+        public void ListChampionDrivers()
+        {
+            var v = rest.GetSingle<Team>("Stat/ChampionshipWinners");
+            foreach (var item in v.Drivers)
+            {
+                Console.WriteLine($"\t {item.Name}");
+            }
+            Console.ReadLine();
+
         }
         public void WinnerOfRace()
         {
             Console.WriteLine("which race?(id)");
             int raceId = int.Parse(Console.ReadLine());
-            var item =  rest.GetSingle<int>($"Stat/WinnerOfRace/{raceId}");
-            Console.WriteLine(item);
+            var item =  rest.GetSingle<Team>($"Stat/WinnerOfRace/{raceId}");
+            Console.WriteLine(item.Name);
+            Console.ReadLine();
+        }
+        public void YoungestDriver()
+        {
+            var driver = rest.GetSingle<Driver>($"Stat/YoungestDriver");
+            Console.WriteLine(driver.Name+": "+driver.Age+" years old");
+            Console.ReadLine();
+        }
+        public void OldestTeam()
+        {
+            var team = rest.GetSingle<Driver>($"Stat/OldestTeam");
+            Console.WriteLine("Oldest team: "+team.Name);
             Console.ReadLine();
         }
     }
